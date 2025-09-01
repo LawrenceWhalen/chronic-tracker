@@ -24,7 +24,7 @@ void main() {
     await tester.pumpWidget(const MyApp());
 
     //search for navigation bar by key
-    expect(find.byKey(const ValueKey('navigation bar')), findsOneWidget);
+    expect(find.byKey(const ValueKey('navigationBar')), findsOneWidget);
 
   });
 }
