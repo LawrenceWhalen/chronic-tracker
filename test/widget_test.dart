@@ -13,7 +13,18 @@ import 'package:chronic_tracker/main.dart';
 void main() {
   testWidgets('App Boot Test', (WidgetTester tester) async {
 
+    //load app widget
     await tester.pumpWidget(const MyApp());
+
+  });
+
+  testWidgets('Navigation bar Test', (WidgetTester tester) async {
+
+    //load app widget
+    await tester.pumpWidget(const MyApp());
+
+    //search for navigation bar by key
+    expect(find.byKey(const ValueKey('navigation bar')), findsOneWidget);
 
   });
 }
