@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:chronic_tracker/themes/styles.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,8 +12,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-        color: Colors.deepPurple
-      );
+    return Scaffold(
+      body: Column(
+        children: [
+          Card(
+            color: Theme.of(context).primaryColor
+          ),
+        ]
+      )
+    );
   }
 }
