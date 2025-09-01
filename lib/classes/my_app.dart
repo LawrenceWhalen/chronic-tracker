@@ -1,17 +1,15 @@
-import 'package:flutter/material.dart';
-import 'package:chronic_tracker/navigation/app_routes.dart';
-import 'package:chronic_tracker/widgets/bottom_navigation_bar.dart';
 import 'package:chronic_tracker/themes/styles.dart';
+import 'package:flutter/material.dart';
+import 'package:chronic_tracker/navigation/app_router.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       theme: darkTheme,
-      initialRoute: '/',
-      routes: appRoutes
+      routerConfig: appRouter,
     );
   }
 }
