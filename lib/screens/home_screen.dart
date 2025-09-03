@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:chronic_tracker/themes/styles.dart';
+import '../widgets/custom_navigation_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,13 +13,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Card(
-            color: Theme.of(context).primaryColor
-          ),
-        ]
-      )
+      body: SafeArea(
+        top: true,
+          child: Card(
+              color: Theme.of(context).primaryColor
+          )
+      ),
+        bottomNavigationBar: CustomNavigationBar(),
     );
   }
 }
