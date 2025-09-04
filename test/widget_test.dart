@@ -26,6 +26,7 @@ void main() {
        buttonBuildMap: {
          'icon': Icons.favorite,
          'label': 'Favorite',
+         'path': '/favorite',
          'isCurrentLocation': false
        }
     ));
@@ -39,6 +40,7 @@ void main() {
         buttonBuildMap: {
           'icon': Icons.abc,
           'label': 'Alphabet',
+          'path': '/alphabet',
           'isCurrentLocation': false
         }
     ));
