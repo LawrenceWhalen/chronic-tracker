@@ -6,6 +6,7 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:chronic_tracker/classes/my_app.dart';
+import 'package:chronic_tracker/resources/buildMaps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
@@ -22,28 +23,15 @@ void main() {
   testWidgets('Navigation Button Widget Build Test', (WidgetTester tester) async {
 
     //create a navigation button for a different page
-    await tester.pumpWidget(customNavigationBarButton(
-       buttonBuildMap: {
-         'icon': Icons.favorite,
-         'label': 'Favorite',
-         'path': '/favorite',
-         'isCurrentLocation': false
-       }
-    ));
+    await tester.pumpWidget(
+        customNavigationBarButton(NavButtonBuildMap(Icons.favorite, 'Favorite', '/favorite', false)));
 
     //expect to find the button without any text
     expect(find.byIcon(Icons.favorite), findsOneWidget);
     expect(find.text('Favorite'), findsNothing);
 
     //create a navigation button for the current page
-    await tester.pumpWidget(customNavigationBarButton(
-        buttonBuildMap: {
-          'icon': Icons.abc,
-          'label': 'Alphabet',
-          'path': '/alphabet',
-          'isCurrentLocation': false
-        }
-    ));
+    await tester.pumpWidget(customNavigationBarButton(NavButtonBuildMap(Icons.abc, 'Alphabet', '/alphabet', true)));
 
     //expect to find the button with text
     expect(find.byIcon(Icons.abc), findsOneWidget);

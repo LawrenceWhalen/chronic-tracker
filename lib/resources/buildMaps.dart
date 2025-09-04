@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class NavButtonBuildMap {
-  Icon icon;
+  IconData icon;
   String label;
   String path;
   bool isCurrentLocation;
