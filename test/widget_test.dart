@@ -23,15 +23,14 @@ void main() {
   testWidgets('Navigation Button Widget Build Test', (WidgetTester tester) async {
 
     //create a navigation button for a different page
-    await tester.pumpWidget(
-        customNavigationBarButton(NavButtonBuildMap(Icons.favorite, 'Favorite', '/favorite', false)));
+    await tester.pumpWidget(CustomNavigationBarButton(navButtonBuildMap: NavButtonBuildMap(Icons.favorite, 'Favorite', '/favorite', false)));
 
     //expect to find the button without any text
     expect(find.byIcon(Icons.favorite), findsOneWidget);
     expect(find.text('Favorite'), findsNothing);
 
     //create a navigation button for the current page
-    await tester.pumpWidget(customNavigationBarButton(NavButtonBuildMap(Icons.abc, 'Alphabet', '/alphabet', true)));
+    await tester.pumpWidget(CustomNavigationBarButton(navButtonBuildMap: NavButtonBuildMap(Icons.abc, 'Alphabet', '/alphabet', true)));
 
     //expect to find the button with text
     expect(find.byIcon(Icons.abc), findsOneWidget);
