@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../navigation/nav_button_build_maps.dart';
+import '../widgets/custom_navigation_bar.dart';
+
 class TestScreen extends StatefulWidget {
   const TestScreen({super.key});
 
@@ -14,9 +17,11 @@ class _TestScreenState extends State<TestScreen> {
     return Directionality(
         textDirection: TextDirection.ltr,
         child: Scaffold(
-        body:Card(
+          body:Card(
             color: Theme.of(context).primaryColor
-        )
-    ));
+          ),
+          bottomNavigationBar: CustomNavigationBar(navButtonBuildList: setIsCurrent(1).returnMap),
+    )
+    );
   }
 }

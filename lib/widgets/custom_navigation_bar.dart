@@ -20,7 +20,7 @@ class CustomNavigationBar extends StatelessWidget {
       key: Key('navigationBar'),
       label: 'Navigation Bar',
       child: Container(
-        color: Theme.of(context).appBarTheme.backgroundColor,
+        color: Theme.of(context).appBarTheme.foregroundColor,
         child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: createNavButtons()

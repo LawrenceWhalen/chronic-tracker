@@ -17,11 +17,19 @@ import '../models/buildModels.dart';
 List<NavButtonBuildModel> navButtonBuildMapList = [];
 
   NavBuildMapReturn setIsCurrent(int currentPage) {
+    navButtonBuildMapList = [];
     homeScreenData[currentPage].update('isCurrentLocation', (value) => true);
     homeScreenData.forEach((item){
       navButtonBuildMapList.add(NavButtonBuildModel.fromMap(item));
     });
+    resetScreenData(homeScreenData);
     return NavBuildMapReturn(navButtonBuildMapList);
+  }
+
+  void resetScreenData(List screenData){
+    screenData.forEach((screen){
+      screen.update('isCurrentLocation', (value) => false);
+    });
   }
 
 
