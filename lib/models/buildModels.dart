@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 class NavButtonBuildModel {
   NavButtonBuildModel({required this.icon, required this.label, required this.path, required this.isCurrentLocation});
 
-  IconData? icon;
-  String? label;
-  String? path;
-  bool? isCurrentLocation;
+  late IconData icon;
+  late String label;
+  late String path;
+  late bool isCurrentLocation;
 
   NavButtonBuildModel.fromMap(Map buildMap) {
     icon = buildMap['icon'];
@@ -14,6 +14,4 @@ class NavButtonBuildModel {
     path = buildMap['path'];
     isCurrentLocation = buildMap['isCurrentLocation'];
   }
-
-
 }
