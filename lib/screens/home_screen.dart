@@ -13,14 +13,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        top: true,
-          child: Card(
+    return Directionality(
+      textDirection: TextDirection.ltr,
+        child: Scaffold(
+          body: SafeArea(
+           top: true,
+            child: Card(
               color: Theme.of(context).primaryColor
-          )
-      ),
+            )
+        ),
         bottomNavigationBar: CustomNavigationBar(navButtonBuildList: setIsCurrent(0).returnMap),
+      )
     );
   }
 }

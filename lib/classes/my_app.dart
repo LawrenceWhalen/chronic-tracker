@@ -7,12 +7,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-        textDirection: TextDirection.ltr,
-        child: MaterialApp.router(
-          theme: darkTheme,
-          routerConfig: appRouter,
-        )
+    return MaterialApp.router(
+      theme: darkTheme,
+      routerConfig: appRouter,
     );
   }
 }
