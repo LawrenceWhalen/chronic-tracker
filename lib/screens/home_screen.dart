@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/custom_navigation_bar.dart';
+import 'package:chronic_tracker/navigation/nav_button_build_maps.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
               color: Theme.of(context).primaryColor
           )
       ),
-        bottomNavigationBar: CustomNavigationBar(),
+        bottomNavigationBar: CustomNavigationBar(navButtonBuildList: setIsCurrent(0).returnMap),
     );
   }
 }
