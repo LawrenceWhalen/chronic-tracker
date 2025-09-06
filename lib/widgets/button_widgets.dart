@@ -19,7 +19,9 @@ class _CustomNavigationBarButtonState extends State<CustomNavigationBarButton> {
   Widget build(BuildContext context) {
     return Semantics(
       label: widget.navButtonBuildModel.label,
-      child: FilledButton(
+      child: Directionality(
+          textDirection: TextDirection.ltr,
+          child: FilledButton(
           onPressed: () => {context.go(widget.navButtonBuildModel.path)},
           child: Row(
             children: [
@@ -27,6 +29,7 @@ class _CustomNavigationBarButtonState extends State<CustomNavigationBarButton> {
               Text(widget.navButtonBuildModel.isCurrentLocation ? widget.navButtonBuildModel.label : ''),
             ],
           )
+      )
       )
     );
   }

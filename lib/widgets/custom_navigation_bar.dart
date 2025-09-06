@@ -2,9 +2,17 @@ import 'package:flutter/material.dart';
 import 'button_widgets.dart';
 
 class CustomNavigationBar extends StatelessWidget {
-  const CustomNavigationBar({super.key, required this.navButtonBuildList});
+  CustomNavigationBar({super.key, required this.navButtonBuildList});
 
   final List navButtonBuildList;
+  final List<Widget> orderedNavButtons = [];
+
+  List<Widget> createNavButtons(){
+    navButtonBuildList.forEach((item) {
+      orderedNavButtons.add(CustomNavigationBarButton(navButtonBuildModel: item));
+    });
+    return orderedNavButtons;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +23,7 @@ class CustomNavigationBar extends StatelessWidget {
         color: Theme.of(context).appBarTheme.backgroundColor,
         child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: navButtonBuildList.map(
-                    (item) => CustomNavigationBarButton(navButtonBuildModel: item)
-            ).toList()
+            children: createNavButtons()
           )
       )
     );
