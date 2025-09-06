@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../resources/buildMaps.dart';
 import 'button_widgets.dart';
 
 class CustomNavigationBar extends StatelessWidget {
@@ -17,7 +16,7 @@ class CustomNavigationBar extends StatelessWidget {
         child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: navButtonBuildList.map(
-                    (item) => CustomNavigationBarButton(navButtonBuildMap: item)
+                    (item) => CustomNavigationBarButton(navButtonBuildModel: item)
             ).toList()
           )
       )

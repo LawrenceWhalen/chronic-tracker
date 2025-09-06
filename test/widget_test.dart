@@ -6,11 +6,12 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:chronic_tracker/classes/my_app.dart';
-import 'package:chronic_tracker/resources/buildMaps.dart';
+import 'package:chronic_tracker/navigation//nav_button_build_maps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:chronic_tracker/widgets/button_widgets.dart';
+import 'package:chronic_tracker/models/buildModels.dart';
 
 void main() {
   testWidgets('App Boot Test', (WidgetTester tester) async {
@@ -23,14 +24,18 @@ void main() {
   testWidgets('Navigation Button Widget Build Test', (WidgetTester tester) async {
 
     //create a navigation button for a different page
-    await tester.pumpWidget(CustomNavigationBarButton(navButtonBuildMap: NavButtonBuildMap(Icons.favorite, 'Favorite', '/favorite', false)));
+    await tester.pumpWidget(CustomNavigationBarButton(navButtonBuildModel: NavButtonBuildModel.fromMap(
+        {'icon': Icons.favorite, 'label': 'Favorite', 'path': '/favorite', 'isCurrentPage':  false}
+    )));
 
     //expect to find the button without any text
     expect(find.byIcon(Icons.favorite), findsOneWidget);
     expect(find.text('Favorite'), findsNothing);
 
     //create a navigation button for the current page
-    await tester.pumpWidget(CustomNavigationBarButton(navButtonBuildMap: NavButtonBuildMap(Icons.abc, 'Alphabet', '/alphabet', true)));
+    await tester.pumpWidget(CustomNavigationBarButton(navButtonBuildModel: NavButtonBuildModel.fromMap(
+        {'icon': Icons.abc, 'label': 'Alphabet', 'path': '/alphabet', 'isCurrentPage':  true}
+    )));
 
     //expect to find the button with text
     expect(find.byIcon(Icons.abc), findsOneWidget);
