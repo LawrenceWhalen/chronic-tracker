@@ -4,12 +4,12 @@ import '../models/buildModels.dart';
 
   final List homeScreenData = [{
     'icon': Icons.home,
-    'label': 'Home Screen',
+    'label': 'Home',
     'path': '/homeScreen',
     'isCurrentLocation': false
   },{
     'icon': Icons.wifi,
-    'label': 'Test Screen',
+    'label': 'Test',
     'path': '/testScreen',
     'isCurrentLocation': false
   }];
