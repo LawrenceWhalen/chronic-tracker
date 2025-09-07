@@ -23,10 +23,12 @@ class _CustomNavigationBarButtonState extends State<CustomNavigationBarButton> {
           textDirection: TextDirection.ltr,
           child: FilledButton(
           onPressed: () => {context.go(widget.navButtonBuildModel.path)},
-          child: Row(
+              style: Theme.of(context).elevatedButtonTheme.style,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(widget.navButtonBuildModel.icon),
-              Text(widget.navButtonBuildModel.isCurrentLocation ? widget.navButtonBuildModel.label : ''),
+              widget.navButtonBuildModel.isCurrentLocation ? Text(widget.navButtonBuildModel.label) : Container(),
             ],
           )
       )
