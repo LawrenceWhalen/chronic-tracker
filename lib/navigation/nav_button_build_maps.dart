@@ -1,39 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:chronic_tracker/models/buildModels.dart';
-import '../models/buildModels.dart';
 
-  final List homeScreenData = [{
+  final Map allButtonMaps ={
+    'test': testButtonData
+  };
+
+  final Map testButtonData = {
+    'home': {
     'icon': Icons.home,
     'label': 'Home',
     'path': '/homeScreen',
     'isCurrentLocation': false
-  },{
+    },
+    'test': {
     'icon': Icons.wifi,
     'label': 'Test',
     'path': '/testScreen',
     'isCurrentLocation': false
-  }];
+  }};
 
-List<NavButtonBuildModel> navButtonBuildMapList = [];
+  Map setIsCurrent(Map buttonData, String currentPage) {
+    Map buttonDataLocal = buttonData;
 
-  NavBuildMapReturn setIsCurrent(int currentPage) {
-    navButtonBuildMapList = [];
-    homeScreenData[currentPage].update('isCurrentLocation', (value) => true);
-    homeScreenData.forEach((item){
-      navButtonBuildMapList.add(NavButtonBuildModel.fromMap(item));
-    });
-    resetScreenData(homeScreenData);
-    return NavBuildMapReturn(navButtonBuildMapList);
+    buttonDataLocal[currentPage].update('isCurrentLocation', (value) => true);
+    return buttonDataLocal;
   }
 
-  void resetScreenData(List screenData){
-    screenData.forEach((screen){
-      screen.update('isCurrentLocation', (value) => false);
+  List buildButtonDateMap(Map buttonDataUnset, String currentPage){
+    List buttonBuildMap = [];
+
+    Map buttonDataSet = setIsCurrent(buttonDataUnset, currentPage);
+
+    buttonDataSet.forEach((i, value){
+      buttonBuildMap.add(NavButtonBuildModel.fromMap(value));
     });
+    return buttonBuildMap;
   }
 
+class NavButtonBuildMap{
+    late String currentPage;
+    late String routeTreeName;
+    late List buttonBuildList;
 
-class NavBuildMapReturn{
-  List returnMap;
-  NavBuildMapReturn(this.returnMap);
+    NavButtonBuildMap.buildMap(this.currentPage, this.routeTreeName){
+      Map buttonDataUnset = allButtonMaps[routeTreeName];
+      buttonBuildList = buildButtonDateMap(buttonDataUnset, currentPage);
+    }
+
+    NavButtonBuildMap({required this.currentPage, required this.routeTreeName});
 }
