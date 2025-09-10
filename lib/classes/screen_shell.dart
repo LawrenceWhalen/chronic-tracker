@@ -26,10 +26,13 @@ class ScreenShell extends StatelessWidget {
                   preferredSize: Size.fromHeight(50),
                   child: CustomAppBar()),
               body: body,
-              bottomNavigationBar: CustomNavigationBar(
+              bottomNavigationBar:  PreferredSize(
+                preferredSize: Size.fromHeight(50),
+                child: CustomNavigationBar(
                   routeTreeName: navButtonRouteTree,
                   currentPageName: currentPage
               ),
+            )
             )
         )
     );
