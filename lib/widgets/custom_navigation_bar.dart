@@ -35,9 +35,11 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
     return Semantics(
       label: 'Navigation Bar',
       child: Container(
+        padding: EdgeInsetsGeometry.directional(top: 10),
         height: 50,
-        color: Theme.of(context).appBarTheme.foregroundColor,
+        color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: createNavButtons()
           )

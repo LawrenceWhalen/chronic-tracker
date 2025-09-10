@@ -15,6 +15,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
         label: 'App Bar',
         key: Key('App Bar'),
         child: AppBar(
+          backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         title: const Text('Chronic Tracker'),
         /* actions: <Widget>[
           Semantics(

@@ -8,6 +8,14 @@ ThemeData get lightTheme {
 
 ThemeData get darkTheme {
   return ThemeData(
-    colorScheme: ColorScheme.highContrastDark()
+    appBarTheme: AppBarTheme(
+      data: AppBarThemeData(
+        backgroundColor: ColorScheme.highContrastDark().onPrimaryContainer,
+      ),
+    ),
+    colorScheme: ColorScheme.highContrastDark(),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: ColorScheme.highContrastDark().onPrimaryContainer,
+    ),
   );
 }
