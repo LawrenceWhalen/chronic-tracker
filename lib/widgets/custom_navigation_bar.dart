@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import '../navigation/nav_button_build_maps.dart';
 import 'button_widgets.dart';
 
 class CustomNavigationBar extends StatelessWidget {
-  CustomNavigationBar({super.key, required this.navButtonBuildList});
+  CustomNavigationBar({super.key, required this.routeTreeName, required this.currentPageName});
 
-  final List navButtonBuildList;
-  final List<Widget> orderedNavButtons = [];
+  final String routeTreeName;
+  final String currentPageName;
 
   List<Widget> createNavButtons(){
-    navButtonBuildList.forEach((item) {
+    List<Widget> orderedNavButtons = [];
+    List buttonBuildList = NavButtonBuildMap.createButtonMap(currentPageName, routeTreeName).buttonBuildList;
+    buttonBuildList.forEach((item) {
       orderedNavButtons.add(CustomNavigationBarButton(navButtonBuildModel: item));
     });
     return orderedNavButtons;
@@ -20,6 +23,7 @@ class CustomNavigationBar extends StatelessWidget {
       key: Key('navigationBar'),
       label: 'Navigation Bar',
       child: Container(
+        height: 50,
         color: Theme.of(context).appBarTheme.foregroundColor,
         child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

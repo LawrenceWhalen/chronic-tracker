@@ -42,7 +42,7 @@ class NavButtonBuildMap{
     late String routeTreeName;
     late List buttonBuildList;
 
-    NavButtonBuildMap.buildMap(this.currentPage, this.routeTreeName){
+    NavButtonBuildMap.createButtonMap(this.currentPage, this.routeTreeName){
       Map buttonDataUnset = allButtonMaps[routeTreeName];
       buttonBuildList = buildButtonDateMap(buttonDataUnset, currentPage);
     }
