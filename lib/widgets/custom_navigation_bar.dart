@@ -2,17 +2,30 @@ import 'package:flutter/material.dart';
 import '../navigation/nav_button_build_maps.dart';
 import 'button_widgets.dart';
 
-class CustomNavigationBar extends StatelessWidget {
+class CustomNavigationBar extends StatefulWidget {
   CustomNavigationBar({super.key, required this.routeTreeName, required this.currentPageName});
 
   final String routeTreeName;
   final String currentPageName;
 
+  @override
+  State<CustomNavigationBar> createState() => _CustomNavigationBarState();
+}
+
+class _CustomNavigationBarState extends State<CustomNavigationBar> {
+  late List<Widget> orderedNavButtons;
+
+  late List buttonSetBuildList;
+
+  late NavButtonBuildMap navButtonBuildMap;
+
   List<Widget> createNavButtons(){
-    List<Widget> orderedNavButtons = [];
-    List buttonBuildList = NavButtonBuildMap.createButtonMap(currentPageName, routeTreeName).buttonBuildList;
-    buttonBuildList.forEach((item) {
-      orderedNavButtons.add(CustomNavigationBarButton(navButtonBuildModel: item));
+    orderedNavButtons = [];
+    buttonSetBuildList = [];
+    navButtonBuildMap = NavButtonBuildMap.createButtonMap(widget.currentPageName, widget.routeTreeName);
+    buttonSetBuildList =  List.of(navButtonBuildMap.buttonBuildList);
+    buttonSetBuildList.forEach((item) {
+      orderedNavButtons.add(CustomNavigationBarButton(navButtonBuildModel: item, key: Key(item.label)));
     });
     return orderedNavButtons;
   }
@@ -20,7 +33,6 @@ class CustomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Semantics(
-      key: Key('navigationBar'),
       label: 'Navigation Bar',
       child: Container(
         height: 50,

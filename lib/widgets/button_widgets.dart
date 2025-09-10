@@ -13,10 +13,9 @@ class CustomNavigationBarButton extends StatefulWidget {
 }
 
 class _CustomNavigationBarButtonState extends State<CustomNavigationBarButton> {
-  bool isHovering = false;
-
   @override
   Widget build(BuildContext context) {
+
     return Semantics(
       label: widget.navButtonBuildModel.label,
       child: Directionality(
