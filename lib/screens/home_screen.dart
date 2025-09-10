@@ -1,3 +1,4 @@
+import 'package:chronic_tracker/classes/screen_shell.dart';
 import 'package:flutter/material.dart';
 import '../widgets/custom_navigation_bar.dart';
 import 'package:chronic_tracker/navigation/nav_button_build_maps.dart';
@@ -13,17 +14,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.ltr,
-        child: Scaffold(
-          body: SafeArea(
-           top: true,
-            child: Card(
-              color: Theme.of(context).primaryColor
-            )
+    return ScreenShell(
+        key: Key('Home Screen'),
+        body: Card(
+            color: Theme.of(context).primaryColor
         ),
-        bottomNavigationBar: CustomNavigationBar(navButtonBuildList: setIsCurrent(0).returnMap),
-      )
+        navButtonRouteTree: 'test',
+        currentPage: 'Home'
     );
   }
 }
