@@ -3,24 +3,24 @@ import 'package:flutter/material.dart';
 import '../widgets/custom_navigation_bar.dart';
 import 'package:chronic_tracker/navigation/nav_button_build_maps.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class TestHomeScreen extends StatefulWidget {
+  const TestHomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<TestHomeScreen> createState() => _TestHomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _TestHomeScreenState extends State<TestHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
     return ScreenShell(
-        key: Key('Home Screen'),
+        key: Key('Test Home Screen'),
         body: Card(
             color: Theme.of(context).primaryColor
         ),
         navButtonRouteTree: 'test',
-        currentPage: 'Home'
+        currentPage: 'TestHome'
     );
   }
 }

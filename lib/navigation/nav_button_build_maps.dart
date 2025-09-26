@@ -6,15 +6,15 @@ import 'package:chronic_tracker/models/buildModels.dart';
   };
 
   final Map testButtonData = {
-    'Home': {
+    'TestHome': {
     'icon': Icons.home,
-    'label': 'Home',
-    'path': '/homeScreen',
+    'label': 'Test Home',
+    'path': '/testHomeScreen',
     'isCurrentLocation': false
     },
     'Test': {
     'icon': Icons.wifi,
-    'label': 'Test',
+    'label': 'Test Screen',
     'path': '/testScreen',
     'isCurrentLocation': false
   }};
@@ -24,7 +24,7 @@ import 'package:chronic_tracker/models/buildModels.dart';
     buttonDataLocal = Map.of(buttonData);
 
     buttonDataLocal.forEach((i, value){
-      if (value['label'].compareTo(currentPage) == 0) {
+      if (i.compareTo(currentPage) == 0) {
         value['isCurrentLocation'] = true;
       } else {
         value['isCurrentLocation'] = false;
