@@ -14,7 +14,7 @@ import 'package:chronic_tracker/models/buildModels.dart';
     },
     'Test': {
     'icon': Icons.wifi,
-    'label': 'Test',
+    'label': 'Test Screen',
     'path': '/testScreen',
     'isCurrentLocation': false
   }};
