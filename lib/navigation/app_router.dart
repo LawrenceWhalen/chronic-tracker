@@ -1,14 +1,14 @@
 import 'package:chronic_tracker/screens/test_screen.dart';
-import 'package:chronic_tracker/screens/home_screen.dart';
+import 'package:chronic_tracker/screens/test_home_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final appRouter = GoRouter(
-  initialLocation: '/homeScreen',
+  initialLocation: '/testHomeScreen',
   routes: [
     GoRoute(
-      path: '/homeScreen',
+      path: '/testHomeScreen',
       //GoRouterState state
-      builder: (context, state) => HomeScreen(),
+      builder: (context, state) => TestHomeScreen(),
     ),
     GoRoute(
       path: '/testScreen',
