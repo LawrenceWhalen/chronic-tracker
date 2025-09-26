@@ -6,11 +6,16 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:chronic_tracker/classes/my_app.dart';
+import 'package:chronic_tracker/screens/test_home_screen.dart';
+import 'package:chronic_tracker/widgets/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:chronic_tracker/widgets/button_widgets.dart';
 import 'package:chronic_tracker/models/buildModels.dart';
+import 'package:mocktail/mocktail.dart';
+
+import 'mocks/go_router_mock.dart';
 
 void main() {
   testWidgets('App Boot Test', (WidgetTester tester) async {
@@ -42,28 +47,48 @@ void main() {
 
   });
 
-  testWidgets('Navigation bar Test', (WidgetTester tester) async {
+  testWidgets('Navigation Bar Build Test', (WidgetTester tester) async {
+    //build a navigation bar using test maps
+    await tester.pumpWidget(Container(
+      height: 150,
+      child: Directionality(
+        textDirection: TextDirection.ltr,
+        child: CustomNavigationBar(
+          routeTreeName: 'test',
+          currentPageName: 'TestHome',
+        )
+      )
+    ));
 
-    //load app widget
-    await tester.pumpWidget(MaterialApp(home: Material(child: Container())));
-    final BuildContext context = tester.element(find.byType(Container));
+    //ensure correct number and composition of buttons
+    expect(find.byType(CustomNavigationBarButton), findsExactly(2));
+    expect(find.byIcon(Icons.home), findsOneWidget);
+    expect(find.byIcon(Icons.wifi), findsOneWidget);
+    expect(find.text('Test Home'), findsOneWidget);
+    expect(find.text('Test Screen'), findsNothing);
+  });
 
-    var routeList = GoRouter.of(context).configuration.routes;
+  testWidgets('Navigation Bar Router Test', (WidgetTester tester) async {
+    (tester) async {
+      //create mock router
+      final mockGoRouter = MockGoRouter();
 
-    //search for navigation bar by key
-    expect(find.byKey(const ValueKey('navigationBar')), findsOneWidget);
+      //build out home screen
+      await tester.pumpWidget(
+        MaterialApp(
+          home: MockGoRouterProvider(
+              goRouter: mockGoRouter,
+              child: TestHomeScreen())
+        )
+      );
 
-    //Check we are on the first screen
-    expect(GoRouterState.of(context).uri.toString(), equals(routeList[0]));
+      //test app bar is making correct call
+      await tester.tap(find.byKey(Key('Test')));
 
-    //Find and press the test screen button
-    expect(find.byKey(const ValueKey('test screen')), findsOneWidget);
-    final testButton = find.byKey(const ValueKey('secondNavigationButton'));
-    await tester.tap(testButton);
-    tester.pump();
+      await tester.pumpAndSettle();
 
-    //Check we are on the test screen
-    expect(GoRouterState.of(context).uri.toString(), equals(routeList[1]));
-
+      verify(() => mockGoRouter.go('/Test')).called(1);
+      verifyNever(() => mockGoRouter.go('/TestHome'));
+    };
   });
 }
